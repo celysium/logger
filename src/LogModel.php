@@ -3,16 +3,23 @@
 namespace Celysium\Logger;
 
 
+use Celysium\Authenticate\Facades\Authenticate;
+use Celysium\MessageBroker\Events\SendMessageEvent;
 use Illuminate\Database\Eloquent\Model;
 
 class LogModel
 {
+    const CREATED = 1;
+    const UPDATED = 2;
+    const DELETED = 3;
+    const RESTORED = 4;
+
     /**
      * Handle the User "created" event.
      */
     public function created(Model $model): void
     {
-        //
+        $this->sendEvent($model, self::CREATED);
     }
 
     /**
@@ -20,7 +27,7 @@ class LogModel
      */
     public function updated(Model $model): void
     {
-        //
+        $this->sendEvent($model, self::UPDATED);
     }
 
     /**
@@ -28,7 +35,7 @@ class LogModel
      */
     public function deleted(Model $model): void
     {
-        //
+        $this->sendEvent($model, self::DELETED);
     }
 
     /**
@@ -36,7 +43,7 @@ class LogModel
      */
     public function restored(Model $model): void
     {
-        //
+        $this->sendEvent($model, self::RESTORED);
     }
 
     /**
@@ -45,5 +52,19 @@ class LogModel
     public function forceDeleted(User $model): void
     {
         //
+    }
+
+
+    private function sendEvent(Model $model, int $type): void
+    {
+        event(new SendMessageEvent('sendLog',
+            [
+                'user_id'    => Authenticate::id(),
+                'model_id'   => $model->getKey(),
+                'model_type' => Model::class,
+                'type'       => $type,
+                'attributes' => $model->toArray()
+            ]
+        ));
     }
 }

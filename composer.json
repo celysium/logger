@@ -3,7 +3,7 @@
   "description": "",
   "autoload": {
     "psr-4": {
-      "Celysium\\Informer\\": "src/"
+      "Celysium\\Logger\\": "src/"
     }
   },
   "authors": [

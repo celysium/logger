@@ -4,23 +4,20 @@ namespace Celysium\Logger;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\Pivot;
-use Illuminate\Support\Collection;
 use Illuminate\Support\ServiceProvider;
 use Symfony\Component\Finder\Finder;
 use Symfony\Component\Finder\SplFileInfo;
-use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 
 
 class LoggerServiceProvider extends ServiceProvider
 {
     public function boot()
     {
+        $models = $this->models();
     }
 
     public function register()
     {
-        $models = $this->models();
-
     }
 
 

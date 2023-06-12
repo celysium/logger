@@ -2,4 +2,5 @@
 .phpunit.result.cache
 /.idea
 /.vscode
+composer.lock
 auth.json

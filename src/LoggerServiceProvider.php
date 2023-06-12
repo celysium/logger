@@ -27,11 +27,11 @@ class LoggerServiceProvider extends ServiceProvider
     public function models()
     {
         $app_path = app_path();
-        $real_path = realpath($app_path) . DIRECTORY_SEPARATOR;
         $namespace = app()->getNamespace();
 
         return collect((new Finder)->in($app_path)->files()->name('*.php'))
-            ->map(function (SplFileInfo $model) use ($real_path, $namespace) {
+            ->map(function (SplFileInfo $model) use ($namespace) {
+
                 return $namespace . str_replace(['/', '.php'], ['\\', ''], $model->getRelativePathname());
 
             })

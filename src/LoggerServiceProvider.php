@@ -8,12 +8,15 @@ use Illuminate\Support\ServiceProvider;
 use Symfony\Component\Finder\Finder;
 use Symfony\Component\Finder\SplFileInfo;
 
-
 class LoggerServiceProvider extends ServiceProvider
 {
     public function boot()
     {
         $models = $this->models();
+
+        foreach ($models as $model) {
+            (new $model())::observe(LogModel::class);
+        }
     }
 
     public function register()

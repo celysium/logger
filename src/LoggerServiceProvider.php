@@ -14,8 +14,9 @@ class LoggerServiceProvider extends ServiceProvider
     {
         $models = $this->models();
 
+        /** @var Model $model */
         foreach ($models as $model) {
-            (new $model())::observe(LogModel::class);
+            $model::observe(LogModel::class);
         }
     }
 

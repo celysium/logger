@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5df5ec4a3215421d7fde32d01356d23e",
+    "content-hash": "747b2412a067df2ce694322ecca98d4b",
     "packages": [
         {
             "name": "brick/math",
@@ -60,6 +60,56 @@
                 }
             ],
             "time": "2023-01-15T23:15:59+00:00"
+        },
+        {
+            "name": "celysium/authenticate",
+            "version": "v1.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/celysium/authenticate.git",
+                "reference": "e11891d292d4ac3ac07fede92e2f92731af9e638"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/celysium/authenticate/zipball/e11891d292d4ac3ac07fede92e2f92731af9e638",
+                "reference": "e11891d292d4ac3ac07fede92e2f92731af9e638",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/framework": "^9.0|^10.0",
+                "php": "^8.0.2"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^7.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Celysium\\Authenticate\\AuthenticateServiceProvider"
+                    ],
+                    "aliases": {
+                        "Authenticate": "Celysium\\Authenticate\\Facades\\Authenticate"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Celysium\\Authenticate\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "Abbas Momeni",
+                    "email": "AbbasMomeny1994@gmail.com"
+                }
+            ],
+            "support": {
+                "issues": "https://github.com/celysium/authenticate/issues",
+                "source": "https://github.com/celysium/authenticate/tree/v1.6"
+            },
+            "time": "2023-05-19T11:38:36+00:00"
         },
         {
             "name": "celysium/message-broker",

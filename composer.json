@@ -1,0 +1,35 @@
+{
+  "name": "celysium/logger",
+  "description": "",
+  "autoload": {
+    "psr-4": {
+      "Celysium\\Informer\\": "src/"
+    }
+  },
+  "authors": [
+    {
+      "name": "Nasser Hekmati",
+      "email": "hekmati.nasser@gmail.com"
+    },
+    {
+      "name": "Abbas Momeni",
+      "email": "AbbasMomeny1994@gmail.com"
+    }
+  ],
+  "require": {
+    "php": "^8.1",
+    "laravel/framework": "^9.0|^10.0",
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Celysium\\Logger\\LoggerServiceProvider"
+      ]
+    }
+  },
+  "require-dev": {
+    "orchestra/testbench": "^7.0"
+  },
+  "minimum-stability": "stable",
+  "prefer-stable": true
+}

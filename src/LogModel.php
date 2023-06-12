@@ -2,7 +2,6 @@
 
 namespace Celysium\Logger;
 
-
 use Celysium\Authenticate\Facades\Authenticate;
 use Celysium\MessageBroker\Events\SendMessageEvent;
 use Illuminate\Database\Eloquent\Model;
@@ -15,7 +14,7 @@ class LogModel
     const RESTORED = 4;
 
     /**
-     * Handle the User "created" event.
+     * Handle the Model "created" event.
      */
     public function created(Model $model): void
     {
@@ -47,11 +46,11 @@ class LogModel
     }
 
     /**
-     * Handle the User "force deleted" event.
+     * Handle the Model "force deleted" event.
      */
-    public function forceDeleted(User $model): void
+    public function forceDeleted(Model $model): void
     {
-        //
+        $this->deleted($model);
     }
 
 

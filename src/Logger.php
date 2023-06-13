@@ -17,7 +17,7 @@ trait Logger
         $response = RequestBuilder::request()
             ->post('/internal/fetch', [
                 'model_id'   => $this->id,
-                'model_type' => self::class
+                'model_type' => static::class
             ])
             ->onError(fn($response) => throw new BadRequestHttpException($response))
             ->json();

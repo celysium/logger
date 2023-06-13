@@ -6,7 +6,7 @@ use Celysium\Authenticate\Facades\Authenticate;
 use Celysium\MessageBroker\Events\SendMessageEvent;
 use Illuminate\Database\Eloquent\Model;
 
-class LogModel
+class LogObserve
 {
     const CREATED = 1;
     const UPDATED = 2;

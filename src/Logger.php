@@ -15,10 +15,13 @@ trait Logger
     public function logs(): Collection
     {
         $response = RequestBuilder::request()
-            ->post('/services/log/api/internal/fetch', [
+            ->post('/internal/fetch', [
                 'model_id'   => $this->id,
                 'model_type' => self::class
-            ])->onError(fn($response) => throw new BadRequestHttpException($response));
+            ])
+            ->onError(fn($response) => throw new BadRequestHttpException($response))
+            ->json();
+
         return collect($response);
     }
 }

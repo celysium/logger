@@ -24,7 +24,6 @@ class LoggerServiceProvider extends ServiceProvider
     {
     }
 
-
     public function models()
     {
         $app_path = app_path();
@@ -47,6 +46,4 @@ class LoggerServiceProvider extends ServiceProvider
         $uses = class_parents($model);
         return in_array(Model::class, $uses) && !in_array(Pivot::class, $uses);
     }
-
-
 }

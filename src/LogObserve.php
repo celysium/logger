@@ -59,6 +59,7 @@ class LogObserve
         event(new SendMessageEvent('sendLog',
             [
                 'user_id'    => Authenticate::id(),
+                'user_name'  => Authenticate::name(),
                 'model_id'   => $model->getKey(),
                 'model_type' => Model::class,
                 'type'       => $type,

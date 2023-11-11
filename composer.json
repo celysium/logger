@@ -19,9 +19,9 @@
   "require": {
     "php": "^8.1",
     "laravel/framework": "^9.0|^10.0",
-    "celysium/message-broker": "^2.0",
-    "celysium/authenticate": "^1.7",
-    "celysium/request": "^1.5"
+    "celysium/message-broker": "^2.6",
+    "celysium/authenticate": "^1.8",
+    "celysium/request": "^1.6"
   },
   "extra": {
     "laravel": {

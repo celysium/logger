@@ -14,6 +14,8 @@ class LoggerServiceProvider extends ServiceProvider
 {
     public function boot(): void
     {
+        $this->mergeConfigFrom(__DIR__ . '/../config/database.php', 'database.connections.logger_connection');
+
         $models = $this->models();
 
         /** @var Model $model */
@@ -28,7 +30,6 @@ class LoggerServiceProvider extends ServiceProvider
 
     public function register(): void
     {
-        $this->mergeConfigFrom(__DIR__ . '/config/database.php', 'database.connections.logger_connection');
     }
 
     public function models()

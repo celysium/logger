@@ -56,15 +56,15 @@ class LogObserve
 
     private function sendEvent(Model $model, int $type): void
     {
-        event(new SendMessageEvent('sendLog',
-            [
-                'user_id'    => Authenticate::id(),
-                'user_name'  => Authenticate::name(),
-                'model_id'   => $model->getKey(),
-                'model_type' => Model::class,
-                'type'       => $type,
-                'attributes' => $model->toArray()
-            ]
-        ));
+//        event(new SendMessageEvent('sendLog',
+//            [
+//                'user_id'    => Authenticate::id(),
+//                'user_name'  => Authenticate::name(),
+//                'model_id'   => $model->getKey(),
+//                'model_type' => Model::class,
+//                'type'       => $type,
+//                'attributes' => $model->toArray()
+//            ]
+//        ));
     }
 }

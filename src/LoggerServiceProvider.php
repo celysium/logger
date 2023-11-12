@@ -26,8 +26,9 @@ class LoggerServiceProvider extends ServiceProvider
         $router->pushMiddlewareToGroup('api', LogRequest::class);
     }
 
-    public function register()
+    public function register(): void
     {
+        $this->mergeConfigFrom(__DIR__ . '/config/database.php', 'database.connections.logger_connection');
     }
 
     public function models()

@@ -17,16 +17,17 @@ class LogRequest
 
     public function handle(Request $request, Closure $next): void
     {
+        $fire_at = microtime(true);
+
         /** @var Response $response */
         $response = $next($request);
 
         if ($response instanceof JsonResponse) {
-            $fire_at = microtime(true);
-
             /** @var RequestLog $requestLog */
             RequestLog::query()->create([
                 'user_id'   => Authenticate::id(),
                 'user_name' => Authenticate::name(),
+                'service_name'=>env('APP_SLUG'),
                 'request'   => [
                     'method' => $request->getMethod(),
                     'uri'    => $request->getRequestUri(),

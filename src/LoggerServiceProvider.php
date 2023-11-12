@@ -2,15 +2,17 @@
 
 namespace Celysium\Logger;
 
+use Celysium\Logger\Middlewares\LogRequest;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\Pivot;
+use Illuminate\Routing\Router;
 use Illuminate\Support\ServiceProvider;
 use Symfony\Component\Finder\Finder;
 use Symfony\Component\Finder\SplFileInfo;
 
 class LoggerServiceProvider extends ServiceProvider
 {
-    public function boot()
+    public function boot(): void
     {
         $models = $this->models();
 
@@ -18,10 +20,15 @@ class LoggerServiceProvider extends ServiceProvider
         foreach ($models as $model) {
             $model::observe(LogObserve::class);
         }
+
+        /** @var Router $router */
+        $router = app('router');
+        $router->pushMiddlewareToGroup('api', LogRequest::class);
     }
 
-    public function register()
+    public function register(): void
     {
+        $this->mergeConfigFrom(__DIR__ . '/config/database.php', 'database.connections.logger_connection');
     }
 
     public function models()

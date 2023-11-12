@@ -12,14 +12,16 @@ class ModelLog extends Model
 {
     use HasFactory;
 
-    protected $connection = 'model_log';
-
+    protected $connection = 'logger';
+    protected $collection = 'model_log';
     protected $fillable = [
         'id',
         'user_id',
         'user_name',
+        'service_name',
         'request',
         'response',
+        'type',
         'data'
     ];
 }

@@ -15,13 +15,12 @@ class LogRequest
     {
     }
 
-    public function handle(Request $request, Closure $next): void
+    public function handle(Request $request, Closure $next)
     {
         $fire_at = microtime(true);
 
         /** @var Response $response */
         $response = $next($request);
-
         if ($response instanceof JsonResponse) {
             /** @var RequestLog $requestLog */
             RequestLog::query()->create([
@@ -42,5 +41,7 @@ class LogRequest
                 ]
             ]);
         }
+
+        return $next($request);
     }
 }

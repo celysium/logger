@@ -2,26 +2,15 @@
 
 namespace Celysium\Logger;
 
-use Celysium\Request\Exceptions\BadRequestHttpException;
-use Celysium\Request\Facades\RequestBuilder;
-use Illuminate\Support\Collection;
+use Celysium\Logger\Models\ModelLog;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 trait Logger
 {
-    /**
-     * @return Collection
-     * @throws BadRequestHttpException
-     */
-    public function logs(): Collection
+    public function logs(): MorphMany
     {
-        $response = RequestBuilder::request()
-            ->post('/internal/fetch', [
-                'model_id'   => $this->id,
-                'model_type' => static::class
-            ])
-            ->onError(fn($response) => throw new BadRequestHttpException($response))
-            ->json();
-
-        return collect($response);
+        /** @var Model $this */
+        return $this->morphMany(ModelLog::class, 'model');
     }
 }

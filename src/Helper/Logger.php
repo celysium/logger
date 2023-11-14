@@ -14,8 +14,8 @@ class Logger
             'user_id'      => Authenticate::id(),
             'user_name'    => Authenticate::name(),
             'service_name' => env('APP_NAME'),
-            'model_id'     => (string)$model->getKey(),
-            'model_type'   => $model->getTable(),
+            'model_id'     => $model->getKey(),
+            'model_type'   => $model->getMorphClass(),
             'type'         => $type,
             'attributes'   => $model->toArray()
         ]);

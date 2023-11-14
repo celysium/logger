@@ -2,7 +2,6 @@
 
 namespace Celysium\Logger\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use MongoDB\Laravel\Eloquent\HybridRelations;
 use MongoDB\Laravel\Eloquent\Model;
 

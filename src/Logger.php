@@ -2,15 +2,22 @@
 
 namespace Celysium\Logger;
 
+use Celysium\Authenticate\Facades\Authenticate;
 use Celysium\Logger\Models\ModelLog;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\MorphMany;
 
-trait Logger
+class Logger
 {
-    public function logs(): MorphMany
+    public static function ModelLog(Model $model, string $type): void
     {
-        /** @var Model $this */
-        return $this->morphMany(ModelLog::class, 'model');
+        ModelLog::query()->create([
+            'user_id'      => Authenticate::id(),
+            'user_name'    => Authenticate::name(),
+            'service_name' => env('APP_NAME'),
+            'model_id'     => $model->getKey(),
+            'model_type'   => $model->getMorphClass(),
+            'type'         => $type,
+            'attributes'   => $model->toArray()
+        ]);
     }
 }

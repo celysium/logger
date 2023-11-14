@@ -3,6 +3,7 @@
 namespace Celysium\Logger\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use MongoDB\Laravel\Eloquent\HybridRelations;
 use MongoDB\Laravel\Eloquent\Model;
 
 /**
@@ -11,7 +12,7 @@ use MongoDB\Laravel\Eloquent\Model;
 class ModelLog extends Model
 {
     use HasFactory;
-
+    use HybridRelations;
     protected $connection = 'logger';
     protected $collection = 'model_log';
     protected $fillable = [
@@ -19,9 +20,9 @@ class ModelLog extends Model
         'user_id',
         'user_name',
         'service_name',
-        'request',
-        'response',
+        'model_id',
+        'model_type',
         'type',
-        'data'
+        'attributes'
     ];
 }

@@ -11,7 +11,6 @@ use MongoDB\Laravel\Eloquent\Model;
  */
 class ModelLog extends Model
 {
-    use HasFactory;
     use HybridRelations;
     protected $connection = 'logger';
     protected $collection = 'model_log';

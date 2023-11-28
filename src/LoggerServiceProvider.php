@@ -22,7 +22,7 @@ class LoggerServiceProvider extends ServiceProvider
 
 
         Http::macro('loggable', function (string $name) {
-            Http::withHeaders(['REQUEST-LOG-NAME' => $name, 'REQUEST-STARTED' => microtime(true)]);
+            return Http::withHeaders(['REQUEST-LOG-NAME' => $name, 'REQUEST-STARTED' => microtime(true)]);
         });
 
         Event::listen('Illuminate\Http\Client\Events\ResponseReceived', ResponseReceivedListener::class);

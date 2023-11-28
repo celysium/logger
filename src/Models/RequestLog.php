@@ -16,6 +16,7 @@ class RequestLog extends Model
         'user_id',
         'user_name',
         'service_name',
+        'name',
         'request',
         'response',
     ];

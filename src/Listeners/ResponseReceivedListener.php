@@ -33,7 +33,7 @@ class ResponseReceivedListener
                     'header' => $event->response->headers(),
                     'body'   => $event->response->body(),
                     'status' => $event->response->status(),
-                    'time'   => number_format(microtime(true) - $event->request->header('REQUEST-STARTED'), 3),
+                    'time'   => number_format(microtime(true) - (int)$event->request->header('REQUEST-STARTED'), 3),
                 ]
             ]);
 

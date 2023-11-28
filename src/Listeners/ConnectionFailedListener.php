@@ -33,7 +33,7 @@ class ConnectionFailedListener
                     'header' => "",
                     'body'   => "",
                     'status' => Response::HTTP_REQUEST_TIMEOUT,
-                    'time'   => number_format(microtime(true) - $event->request->header('REQUEST-STARTED'), 3),
+                    'time'   => number_format(microtime(true) - (int)$event->request->header('REQUEST-STARTED'), 3),
                 ]
             ]);
     }

@@ -23,6 +23,7 @@ class LogRequest
                 'user_id'      => Authenticate::id(),
                 'user_name'    => Authenticate::name(),
                 'service_name' => env('APP_SLUG'),
+                'name'         => $request->route()->getName(),
                 'request'      => [
                     'method' => $request->getMethod(),
                     'uri'    => $request->getRequestUri(),

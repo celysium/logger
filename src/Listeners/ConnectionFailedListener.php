@@ -22,7 +22,7 @@ class ConnectionFailedListener
                 'user_id'      => Authenticate::id(),
                 'user_name'    => Authenticate::name(),
                 'service_name' => env('APP_SLUG'),
-                'name'         => $event->request->header('REQUEST-LOG-NAME'),
+                'name'         => current($event->request->header('REQUEST-LOG-NAME')),
                 'request'      => [
                     'method' => $event->request->method(),
                     'uri'    => $event->request->url(),
@@ -33,7 +33,7 @@ class ConnectionFailedListener
                     'header' => "",
                     'body'   => "",
                     'status' => Response::HTTP_REQUEST_TIMEOUT,
-                    'time'   => number_format(microtime(true) - (int)$event->request->header('REQUEST-STARTED'), 3),
+                    'time'   => number_format(microtime(true) - current($event->request->header('REQUEST-STARTED')), 3),
                 ]
             ]);
     }

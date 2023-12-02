@@ -6,6 +6,7 @@ namespace Celysium\Logger\Listeners;
 use Celysium\Authenticate\Facades\Authenticate;
 use Celysium\Logger\Models\RequestLog;
 use Symfony\Component\HttpFoundation\Response;
+use Illuminate\Http\Client\Events\ConnectionFailed;
 
 class ConnectionFailedListener
 {
@@ -14,7 +15,7 @@ class ConnectionFailedListener
 
     }
 
-    public function handle(object $event): void
+    public function handle(ConnectionFailed $event): void
     {
         RequestLog::query()
             ->create([
@@ -26,7 +27,7 @@ class ConnectionFailedListener
                     'method' => $event->request->method(),
                     'uri'    => $event->request->url(),
                     'header' => $event->request->headers(),
-                    'body'   => $event->request->body(),
+                    'body'   => $event->request->json(),
                 ],
                 'response'     => [
                     'header' => "",

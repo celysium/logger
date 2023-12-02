@@ -19,18 +19,18 @@ class ConnectionFailedListener
     {
         RequestLog::query()
             ->create([
-                'user_id'      => Authenticate::id(),
-                'user_name'    => Authenticate::name(),
-                'service_name' => env('APP_SLUG'),
+                'user_id'        => Authenticate::id(),
+                'user_name'      => Authenticate::name(),
+                'service_name'   => env('APP_SLUG'),
                 'transaction_id' => current($event->request->header('transaction_id')),
-                'name'         => current($event->request->header('REQUEST-LOG-NAME'))?:null,
-                'request'      => [
+                'name'           => current($event->request->header('REQUEST-LOG-NAME')) ?: null,
+                'request'        => [
                     'method' => $event->request->method(),
                     'uri'    => $event->request->url(),
                     'header' => $event->request->headers(),
-                    'body'   => $event->request->body() ?: [],
+                    'body'   => json_decode($event->request->body()) ?: [],
                 ],
-                'response'     => [
+                'response'       => [
                     'header' => "",
                     'body'   => "",
                     'status' => Response::HTTP_REQUEST_TIMEOUT,

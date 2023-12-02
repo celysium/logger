@@ -28,7 +28,7 @@ class ResponseReceivedListener
                     'method' => $event->request->method(),
                     'uri'    => $event->request->url(),
                     'header' => $event->request->headers(),
-                    'body'   => $event->request->body() ?: [],
+                    'body'   => json_decode($event->request->body()) ?: [],
                 ],
                 'response'       => [
                     'header' => $event->response->headers(),

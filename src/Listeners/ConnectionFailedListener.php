@@ -27,7 +27,7 @@ class ConnectionFailedListener
                     'method' => $event->request->method(),
                     'uri'    => $event->request->url(),
                     'header' => $event->request->headers(),
-                    'body'   => $event->request->json(),
+                    'body'   => $event->request->body() ?: [],
                 ],
                 'response'     => [
                     'header' => "",

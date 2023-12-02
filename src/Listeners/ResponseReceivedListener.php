@@ -19,17 +19,18 @@ class ResponseReceivedListener
 
         RequestLog::query()
             ->create([
-                'user_id'      => Authenticate::id(),
-                'user_name'    => Authenticate::name(),
-                'service_name' => env('APP_SLUG'),
-                'name'         => current($event->request->header('REQUEST-LOG-NAME')) ?: null,
-                'request'      => [
+                'user_id'        => Authenticate::id(),
+                'user_name'      => Authenticate::name(),
+                'service_name'   => env('APP_SLUG'),
+                'transaction_id' => current($event->request->header('transaction_id')),
+                'name'           => current($event->request->header('REQUEST-LOG-NAME')) ?: null,
+                'request'        => [
                     'method' => $event->request->method(),
                     'uri'    => $event->request->url(),
                     'header' => $event->request->headers(),
                     'body'   => $event->request->body() ?: [],
                 ],
-                'response'     => [
+                'response'       => [
                     'header' => $event->response->headers(),
                     'body'   => $event->response->json(),
                     'status' => $event->response->status(),

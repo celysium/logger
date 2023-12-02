@@ -31,7 +31,7 @@ class ResponseReceivedListener
                 ],
                 'response'     => [
                     'header' => $event->response->headers(),
-                    'body'   => $event->response->body(),
+                    'body'   => $event->response->json(),
                     'status' => $event->response->status(),
                     'time'   => number_format(microtime(true) - current($event->request->header('REQUEST-STARTED')), 3),
                 ]

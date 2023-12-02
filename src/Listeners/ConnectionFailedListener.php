@@ -16,7 +16,6 @@ class ConnectionFailedListener
 
     public function handle(object $event): void
     {
-
         RequestLog::query()
             ->create([
                 'user_id'      => Authenticate::id(),

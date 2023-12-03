@@ -23,7 +23,7 @@ class LogRequest
         $response = $next($request);
         if ($response instanceof JsonResponse) {
             /** @var RequestLog $requestLog */
-            $requestLog = RequestLog::query()->create([
+            RequestLog::query()->create([
                 'user_id'        => Authenticate::id(),
                 'user_name'      => Authenticate::name(),
                 'service_name'   => env('APP_SLUG'),

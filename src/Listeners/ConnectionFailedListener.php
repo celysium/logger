@@ -23,7 +23,7 @@ class ConnectionFailedListener
                     'user_id'        => Authenticate::id(),
                     'user_name'      => Authenticate::name(),
                     'service_name'   => env('APP_SLUG'),
-                    'transaction_id' => current($event->request->header('transaction_id')),
+                    'transaction_id' => current($event->request->header('X-TRANSACTION-ID')),
                     'name'           => $name,
                     'request'        => [
                         'method' => $event->request->method(),

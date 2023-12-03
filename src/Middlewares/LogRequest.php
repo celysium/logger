@@ -16,8 +16,8 @@ class LogRequest
     {
         $fire_at = microtime(true);
 
-        $transactionId = Str::uuid()->toString();
-        $request->headers->set('transaction_id', $transactionId);
+        $transactionId = $request->header('X-TRANSACTION-ID', Str::uuid()->toString());
+        $request->headers->set('X-TRANSACTION-ID', $transactionId);
 
         /** @var Response $response */
         $response = $next($request);
